@@ -11,6 +11,7 @@ export default function Document() {
         <div className='navbar'>
           <Link href='/'>홈</Link>
           <Link href='/list'>상품목록</Link>
+          <Link href='/cart'>장바구니</Link>
         </div>
         <Main />
         <NextScript />
