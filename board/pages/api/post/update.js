@@ -10,23 +10,25 @@ export default async function handler(req, res) {
 
     if (isConnected) {
       try {
-        if (body.title === '') {
+        const { _id, title, description } = body;
+
+        if (title === '') {
           return res.status(500).json('제목을 입력해 주십시오');
         }
 
-        if (body.description === '') {
+        if (description === '') {
           return res.status(500).json('내용을 입력해 주십시오');
         }
 
-        const post = {
-          title: body.title,
-          description: body.description,
+        const updatedPost = {
+          title,
+          description,
         };
 
-        // create document(row)
+        // update document(row)
         const result = await db
           .collection('post')
-          .updateOne({ _id: new ObjectId(body._id) }, { $set: post });
+          .updateOne({ _id: new ObjectId(_id) }, { $set: updatedPost });
 
         return res.status(302).redirect('/list');
       } catch (err) {

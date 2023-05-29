@@ -13,6 +13,7 @@ export default function Document() {
             Home
           </Link>
           <Link href='/list'>List</Link>
+          <Link href='/write'>Write</Link>
         </div>
         <Main />
         <NextScript />

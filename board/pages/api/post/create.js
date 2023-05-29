@@ -9,16 +9,23 @@ export default async function handler(req, res) {
 
     if (isConnected) {
       try {
-        if (body.title === '') {
+        const { title, description } = body;
+
+        if (title === '') {
           return res.status(500).json('제목을 입력해 주십시오');
         }
 
-        if (body.description === '') {
+        if (description === '') {
           return res.status(500).json('내용을 입력해 주십시오');
         }
 
+        const newPost = {
+          title,
+          description,
+        };
+
         // create document(row)
-        const result = await db.collection('post').insertOne(body);
+        const result = await db.collection('post').insertOne(newPost);
 
         return res.status(302).redirect('/list');
       } catch (err) {
