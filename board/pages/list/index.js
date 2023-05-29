@@ -6,12 +6,13 @@ export default function List({ posts }) {
     <div className='list-bg'>
       {posts.map((post) => {
         return (
-          <Link href={`/detail/${post._id}`} key={post._id} prefetch={false}>
-            <div className='list-item'>
+          <div className='list-item' key={post._id}>
+            <Link href={`/detail/${post._id}`} prefetch={false}>
               <h4>{post.title}</h4>
-              <p>{post.description}</p>
-            </div>
-          </Link>
+            </Link>
+            <p>{post.description}</p>
+            <Link href={`/edit/${post._id}`}>✏️</Link>
+          </div>
         );
       })}
     </div>
