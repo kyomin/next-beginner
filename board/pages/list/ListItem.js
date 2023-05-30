@@ -32,18 +32,19 @@ export default function ListItem({ posts }) {
 
   return (
     <div>
-      {posts.map((post) => {
-        return (
-          <div className='list-item' key={post._id}>
-            <Link href={`/detail/${post._id}`} prefetch={false}>
-              <h4>{post.title}</h4>
-            </Link>
-            <p>{post.description}</p>
-            <Link href={`/edit/${post._id}`}>✏️</Link>
-            <span onClick={(e) => handleDelete(post._id, e)}>🗑</span>
-          </div>
-        );
-      })}
+      {posts !== undefined &&
+        posts.map((post) => {
+          return (
+            <div className='list-item' key={post._id}>
+              <Link href={`/detail/${post._id}`} prefetch={false}>
+                <h4>{post.title}</h4>
+              </Link>
+              <p>{post.description}</p>
+              <Link href={`/edit/${post._id}`}>✏️</Link>
+              <span onClick={(e) => handleDelete(post._id, e)}>🗑</span>
+            </div>
+          );
+        })}
     </div>
   );
 }
