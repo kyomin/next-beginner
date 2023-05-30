@@ -1,20 +1,10 @@
 import { connectToDatabase } from '@/util/database';
-import Link from 'next/link';
+import ListItem from './ListItem';
 
 export default function List({ posts }) {
   return (
     <div className='list-bg'>
-      {posts.map((post) => {
-        return (
-          <div className='list-item' key={post._id}>
-            <Link href={`/detail/${post._id}`} prefetch={false}>
-              <h4>{post.title}</h4>
-            </Link>
-            <p>{post.description}</p>
-            <Link href={`/edit/${post._id}`}>✏️</Link>
-          </div>
-        );
-      })}
+      <ListItem posts={posts} />
     </div>
   );
 }
