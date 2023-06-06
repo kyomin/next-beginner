@@ -41,7 +41,12 @@ export default function ListItem({ posts }) {
               </Link>
               <p>{post.description}</p>
               <Link href={`/edit/${post._id}`}>✏️</Link>
-              <span onClick={(e) => handleDelete(post._id, e)}>🗑</span>
+              <span
+                style={{ cursor: 'pointer' }}
+                onClick={(e) => handleDelete(post._id, e)}
+              >
+                🗑
+              </span>
             </div>
           );
         })}

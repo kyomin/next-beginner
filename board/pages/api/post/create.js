@@ -1,15 +1,16 @@
-import { connectToDatabase } from '@/util/database';
+import { connectDB } from '@/util/database';
 
 export default async function handler(req, res) {
   const { method, body } = req;
 
   if (method === 'POST') {
-    const { client, db } = await connectToDatabase();
+    const client = await connectDB;
     const isConnected = client.topology.s.state === 'connected';
 
     if (isConnected) {
       try {
         const { title, description } = body;
+        const db = client.db('board');
 
         if (title === '') {
           return res.status(500).json('제목을 입력해 주십시오');

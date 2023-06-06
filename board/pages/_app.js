@@ -10,12 +10,11 @@
  */
 import '@/styles/globals.css';
 import Link from 'next/link';
-import { SessionProvider } from 'next-auth/react';
 import LoginBtn from '../components/LoginBtn';
 
 export default function App({ Component, pageProps }) {
   return (
-    <SessionProvider>
+    <>
       {/* Navigation Bar */}
       <div className='navbar'>
         <Link href='/' className='logo'>
@@ -26,6 +25,6 @@ export default function App({ Component, pageProps }) {
         <LoginBtn />
       </div>
       <Component {...pageProps} />
-    </SessionProvider>
+    </>
   );
 }

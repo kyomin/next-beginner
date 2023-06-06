@@ -1,4 +1,4 @@
-import { connectToDatabase } from '@/util/database';
+import { connectDB } from '@/util/database';
 import { ObjectId } from 'mongodb';
 
 export default function Edit({ post }) {
@@ -27,13 +27,13 @@ export default function Edit({ post }) {
 }
 
 export async function getServerSideProps({ params }) {
-  const { client, db } = await connectToDatabase();
+  const client = await connectDB;
   const isConnected = client.topology.s.state === 'connected';
   let post = {};
 
   if (isConnected) {
-    // get dynamic route value in getServerSideProps
-    const id = params._id;
+    const id = params._id; // get dynamic route value in getServerSideProps
+    const db = client.db('board');
 
     try {
       post = await db.collection('post').findOne({ _id: new ObjectId(id) });

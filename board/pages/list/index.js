@@ -1,4 +1,4 @@
-import { connectToDatabase } from '@/util/database';
+import { connectDB } from '@/util/database';
 import ListItem from './ListItem';
 
 // 리스트 요청은 변동이 있는 데이터를 가져오는 작업이므로 정적(static) 페이지가 아니다.
@@ -14,11 +14,12 @@ export default function List({ posts }) {
 }
 
 export async function getServerSideProps() {
-  const { client, db } = await connectToDatabase();
+  const client = await connectDB;
   const isConnected = client.topology.s.state === 'connected';
   let posts = [];
 
   if (isConnected) {
+    const db = client.db('board');
     posts = await db.collection('post').find({}).toArray();
     posts = JSON.parse(JSON.stringify(posts));
   }
