@@ -1,4 +1,6 @@
 import { connectDB } from '@/util/database';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '../auth/[...nextauth]';
 
 export default async function handler(req, res) {
   const { method, body } = req;
@@ -11,6 +13,11 @@ export default async function handler(req, res) {
       try {
         const { title, description } = body;
         const db = client.db('board');
+        const session = await getServerSession(req, res, authOptions);
+
+        if (!session) {
+          return res.status(500).json('로그인해 주십시오');
+        }
 
         if (title === '') {
           return res.status(500).json('제목을 입력해 주십시오');
@@ -23,6 +30,7 @@ export default async function handler(req, res) {
         const newPost = {
           title,
           description,
+          author: session.user.email,
         };
 
         // create document(row)
