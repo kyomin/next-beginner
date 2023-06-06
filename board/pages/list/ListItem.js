@@ -10,13 +10,17 @@ export default function ListItem({ posts }) {
       body: id,
     })
       .then((res) => {
-        if (res.status === 200) {
-          return res.json();
-        } else {
-          // 서버가 에러코드 전송 시 실행할 코드
-        }
+        return res.json();
       })
       .then((res) => {
+        // 삭제 실패
+        if (!res.deletedCount) {
+          const failMessage = typeof res === 'string' ? res : 'Server Error!';
+          alert(failMessage);
+
+          return;
+        }
+
         // 서버 요청 성공 시 실행할 코드
         e.target.parentElement.style.opacity = 0;
 
