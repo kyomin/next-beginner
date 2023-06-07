@@ -1,9 +1,9 @@
 'use client';
+import { Fragment, useEffect, useState } from 'react';
 import axios from 'axios';
 import LoginBtn from './LoginBtn';
 import LogoutBtn from './LogoutBtn';
 import RegisterBtn from './RegisterBtn';
-import { Fragment, useEffect, useState } from 'react';
 
 export default function AuthBtns() {
   const [user, setUser] = useState(null);
