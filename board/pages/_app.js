@@ -8,22 +8,13 @@
  * 4. Global CSS는 이곳에 추가한다.
  * 5. 헤더와 푸터같이 공통적으로 사용하는 레이아웃은 이곳에 추가한다.
  */
+import NavBar from '@/components/NavBar';
 import '@/styles/globals.css';
-import Link from 'next/link';
-import LoginBtn from '../components/LoginBtn';
 
 export default function App({ Component, pageProps }) {
   return (
     <>
-      {/* Navigation Bar */}
-      <div className='navbar'>
-        <Link href='/' className='logo'>
-          Home
-        </Link>
-        <Link href='/list'>List</Link>
-        <Link href='/write'>Write</Link>
-        <LoginBtn />
-      </div>
+      <NavBar />
       <Component {...pageProps} />
     </>
   );

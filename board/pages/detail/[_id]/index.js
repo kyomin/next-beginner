@@ -3,7 +3,7 @@ import { ObjectId } from 'mongodb';
 
 export default function Detail({ post }) {
   return (
-    <div>
+    <div className='p-20'>
       <h4>상세 페이지</h4>
       <h4>{post.title}</h4>
       <p>{post.description}</p>
