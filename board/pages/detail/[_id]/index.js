@@ -1,5 +1,6 @@
 import { connectDB } from '@/util/database';
 import { ObjectId } from 'mongodb';
+import Comment from './Comment';
 
 export default function Detail({ post }) {
   return (
@@ -7,6 +8,7 @@ export default function Detail({ post }) {
       <h4>상세 페이지</h4>
       <h4>{post.title}</h4>
       <p>{post.description}</p>
+      <Comment postId={post._id.toString()} />
     </div>
   );
 }
