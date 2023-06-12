@@ -60,5 +60,15 @@ MySQL과 같은 관계형 DB와 비교하자면 다음과 같다.
 - MySQL의 Database = MongoDB의 Database
 - MySQL의 Table = MongoDB의 Collection
 - MySQL의 Column = MongoDB의 Field
-- MySQL의 Row = MongoDB의 Document
-로 보면 된다.
+- MySQL의 Row = MongoDB의 Document   
+로 보면 된다.   
+   
+다음은 MongoDB 관련 명령어이다.   
+   
+1. Database 생성   
+use shop   
+ㄴ shop이라는 이름으로 DB를 생성한다.   
+2. Collection 생성 (대소문자 구분에 주의한다)   
+db.createCollection("users");   
+ㄴ users라는 이름으로 컬렉션을 생성한다.   
+위에서 shop이라는 DB 생성 과정을 거쳤으므로 shop DB 내에 users 컬렉션이 생성되는 것이다.
