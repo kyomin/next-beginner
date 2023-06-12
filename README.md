@@ -61,14 +61,30 @@ MySQL과 같은 관계형 DB와 비교하자면 다음과 같다.
 - MySQL의 Table = MongoDB의 Collection
 - MySQL의 Column = MongoDB의 Field
 - MySQL의 Row = MongoDB의 Document   
-로 보면 된다.   
    
 다음은 MongoDB 관련 명령어이다.   
    
 1. Database 생성   
-use shop   
+`use shop`   
 ㄴ shop이라는 이름으로 DB를 생성한다.   
 2. Collection 생성 (대소문자 구분에 주의한다)   
-db.createCollection("users");   
+`db.createCollection("users");`   
 ㄴ users라는 이름으로 컬렉션을 생성한다.   
-위에서 shop이라는 DB 생성 과정을 거쳤으므로 shop DB 내에 users 컬렉션이 생성되는 것이다.
+위에서 shop이라는 DB 생성 과정을 거쳤으므로 shop DB 내에 users 컬렉션이 생성되는 것이다.   
+3. Collection 생성 확인   
+`show collections;`   
+4. Database 생성 확인   
+`show databases;`   
+5. users 컬렉션에 유저 도큐먼트를 생성한다.   
+`db.users.insert({"name": "홍길동", "age": 20, "gender": "man"});`
+ㄴ name 필드, age 필드, gender 필드로 구성된 users 컬렉션에 해당 도큐먼트를 생성하는 명령이다.   
+6. users 컬렉션의 생성한 데이타를 확인한다.   
+`db.users.find();`   
+7. 만들어진 컬렉션을 삭제한다.   
+`db.users.drop();`   
+ㄴ show collections; 명령으로 users 컬렉션이 삭제된 것을 확인할 수 있다.   
+8. 만들어진 데이터베이스를 삭제한다.   
+`use shop;`   
+`db.dropDatabase();`   
+ㄴ db.dropDatabase() 명령만 사용하여 바로 제거해도 되지만, 실수로 다른 DB를 선택해놓고 삭제하는 것을 방지 하기 위해 use 데이타베이스 명령으로 확실히 데이터베이스를 설정해주고 삭제하도록 하는 것이 좋다.   
+이제 show databases; 명령으로 shop 데이터베이스가 삭제된 것을 확인할 수 있다.
