@@ -87,4 +87,18 @@ MySQL과 같은 관계형 DB와 비교하자면 다음과 같다.
 `use shop;`   
 `db.dropDatabase();`   
 ㄴ db.dropDatabase() 명령만 사용하여 바로 제거해도 되지만, 실수로 다른 DB를 선택해놓고 삭제하는 것을 방지 하기 위해 use 데이타베이스 명령으로 확실히 데이터베이스를 설정해주고 삭제하도록 하는 것이 좋다.   
-이제 show databases; 명령으로 shop 데이터베이스가 삭제된 것을 확인할 수 있다.
+이제 show databases; 명령으로 shop 데이터베이스가 삭제된 것을 확인할 수 있다.   
+   
+# Next.js를 이용한 게시판 프로젝트
+현재 프로젝트는 Next.js를 이용하여 간단한 게시판을 만들어 본다.   
+기본적인 CRUD부터, 인증 기술을 이용한 로그인 기능을 구현하였다.   
+애플리케이션의 페이지는 크게 다음과 같다.   
+   
+### List Page
+![list page](https://github.com/kyomin/next-beginner/assets/46395776/3977b514-e468-438e-9116-c16577a24a22)   
+   
+### Register Page
+![register page](https://github.com/kyomin/next-beginner/assets/46395776/6c94b643-8502-46d7-981e-693dfbc30920)   
+   
+### Login Page
+![login page](https://github.com/kyomin/next-beginner/assets/46395776/caef290b-bced-4a56-8f1e-c61af7a5e13e)
